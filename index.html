@@ -20,13 +20,12 @@
 
 </head>
 <body onload="init()">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header class="header">
         <div class="header-content">
-            <div class="logo">
+            <a href="index.html">
                 <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Pokeball" class="logo-icon">
-                <a href="index.html"><h1>Pokédex</h1></a>
-            </div>
+                <h1>Pokédex</h1>
+            </a>
             <div class="search-container" role="search">
                 <input type="text" id="searchInput" placeholder="Search Pokémon..." class="search-input" minlength="3" aria-label="Enter Pokémon name">
                 <button class="search-btn" onclick="showSearchedPokemon()" aria-label="Search">🔍</button>
