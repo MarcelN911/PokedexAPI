@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/stats.css">
+    <link rel="stylesheet" href="styles/card.css">
+    <link rel="stylesheet" href="styles/modal.css">
+    <link rel="stylesheet" href="styles/button.css">
+    <link rel="stylesheet" href="styles/media.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="script.js" defer></script>
+    <script src="scripts/template.js" defer></script>
+    <script src="scripts/modal.js" defer></script>
+
+</head>
+<body onload="init()">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Pokeball" class="logo-icon">
+                <a href="index.html"><h1>Pokédex</h1></a>
+            </div>
+            <div class="search-container" role="search">
+                <input type="text" id="searchInput" placeholder="Search Pokémon..." class="search-input" minlength="3" aria-label="Enter Pokémon name">
+                <button class="search-btn" onclick="showSearchedPokemon()" aria-label="Search">🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content" id="main-content">
+        <div class="alert" id="alert">
+    
+        </div>
+        <section class="pokemon-container" id="pokemonContainer">
+            
+        </section>
+
+        <div class="load-more-container">
+            <button class="load-more-btn" id="loadMoreBtn" onclick="loadMoreCards()">load more Pokemon</button>
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="modalOverlay">
+        
+    </div>
+
+    <footer class="footer">
+        <p>Pokédex App © 2026</p>
+    </footer>
+
+    <div id="loaderOverlay" class="loader-overlay" style="display: none;">
+      <div class="pokeball-loader"></div>
+      <span class="loader-text">load Pokémon...</span>
+    </div>
+</body>
+</html>
