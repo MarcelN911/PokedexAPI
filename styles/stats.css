@@ -1,0 +1,54 @@
+.card-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 20px 20px;
+    position: relative;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.22);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-modal {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+.stat-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    width: 35px;
+    text-transform: uppercase;
+}
+
+.stat-bar {
+    flex: 1;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.stat-fill {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.stat-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    width: 30px;
+    text-align: right;
+}

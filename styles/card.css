@@ -1,0 +1,133 @@
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.pokemon-card {
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 32px var(--shadow-dark);
+    transition: var(--transition);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.35s ease both;
+}
+
+.pokemon-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: #ffffff;
+    border-radius: var(--border-radius) var(--border-radius) 50% 50%;
+    z-index: 0;
+}
+
+.pokemon-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px var(--shadow-dark);
+}
+
+.bg-normal:hover   { box-shadow: 0 20px 50px rgba(168, 168, 120, 0.5); }
+.bg-fire:hover     { box-shadow: 0 20px 50px rgba(240, 128,  48, 0.5); }
+.bg-water:hover    { box-shadow: 0 20px 50px rgba(104, 144, 240, 0.5); }
+.bg-electric:hover { box-shadow: 0 20px 50px rgba(248, 208,  48, 0.5); }
+.bg-grass:hover    { box-shadow: 0 20px 50px rgba(120, 200,  80, 0.5); }
+.bg-ice:hover      { box-shadow: 0 20px 50px rgba(152, 216, 216, 0.5); }
+.bg-fighting:hover { box-shadow: 0 20px 50px rgba(192,  48,  40, 0.5); }
+.bg-poison:hover   { box-shadow: 0 20px 50px rgba(160,  64, 160, 0.5); }
+.bg-ground:hover   { box-shadow: 0 20px 50px rgba(224, 192, 104, 0.5); }
+.bg-flying:hover   { box-shadow: 0 20px 50px rgba(168, 144, 240, 0.5); }
+.bg-psychic:hover  { box-shadow: 0 20px 50px rgba(248,  88, 136, 0.5); }
+.bg-bug:hover      { box-shadow: 0 20px 50px rgba(168, 184,  32, 0.5); }
+.bg-rock:hover     { box-shadow: 0 20px 50px rgba(184, 160,  56, 0.5); }
+.bg-ghost:hover    { box-shadow: 0 20px 50px rgba(112,  88, 152, 0.5); }
+.bg-dragon:hover   { box-shadow: 0 20px 50px rgba(112,  56, 248, 0.5); }
+.bg-dark:hover     { box-shadow: 0 20px 50px rgba(112,  88,  72, 0.5); }
+.bg-steel:hover    { box-shadow: 0 20px 50px rgba(184, 184, 208, 0.5); }
+.bg-fairy:hover    { box-shadow: 0 20px 50px rgba(238, 153, 172, 0.5); }
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.pokemon-id {
+    font-size: 14px;
+    font-weight: 700;
+    color: #888;
+}
+
+.pokemon-name {
+    font-size: 19px;
+    font-weight: 700;
+    color: #333;
+    text-transform: capitalize;
+}
+
+.card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    position: relative;
+    z-index: 1;
+}
+
+.card-image img {
+    max-width: 130px;
+    max-height: 130px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+    transition: var(--transition);
+}
+
+.pokemon-card:hover .card-image img {
+    transform: scale(1.1);
+}
+
+.card-types {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 15px 20px 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.type-badge {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 0.5px;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.type-normal   { background: rgba(168, 168, 120, 0.9); }
+.type-fire     { background: rgba(240, 128,  48, 0.9); }
+.type-water    { background: rgba(104, 144, 240, 0.9); }
+.type-electric { background: rgba(248, 208,  48, 0.9); color: #333; }
+.type-grass    { background: rgba(120, 200,  80, 0.9); }
+.type-ice      { background: rgba(152, 216, 216, 0.9); color: #333; }
+.type-fighting { background: rgba(192,  48,  40, 0.9); }
+.type-poison   { background: rgba(160,  64, 160, 0.9); }
+.type-ground   { background: rgba(224, 192, 104, 0.9); color: #333; }
+.type-flying   { background: rgba(168, 144, 240, 0.9); }
+.type-psychic  { background: rgba(248,  88, 136, 0.9); }
+.type-bug      { background: rgba(168, 184,  32, 0.9); }
+.type-rock     { background: rgba(184, 160,  56, 0.9); }
+.type-ghost    { background: rgba(112,  88, 152, 0.9); }
+.type-dragon   { background: rgba(112,  56, 248, 0.9); }
+.type-dark     { background: rgba(112,  88,  72, 0.9); }
+.type-steel    { background: rgba(184, 184, 208, 0.9); color: #333; }
+.type-fairy    { background: rgba(238, 153, 172, 0.9); }
+

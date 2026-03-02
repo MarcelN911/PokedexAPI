@@ -1,0 +1,294 @@
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo h1 {
+        font-size: 24px;
+    }
+
+    .search-input {
+        flex: 1;
+        min-width: 140px;
+    }
+
+    .header {
+        padding: 12px 0;
+    }
+
+    .pokemon-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 16px;
+    }
+
+    .main-content {
+        padding: 20px 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-overlay.active {
+        align-items: stretch;
+        background: rgba(26,26,46,0.98);
+    }
+
+    .modal {
+        width: 100%;
+        max-width: 100vw;
+        min-width: unset;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        padding: 0;
+        box-shadow: none;
+        display: flex;
+        flex-direction: column;
+        z-index: 2000;
+        animation: modalSlideUp 0.25s cubic-bezier(.4,1.6,.6,1) 1;
+        overflow: hidden;
+    }
+
+    .modal-header {
+        padding: 32px 12px 24px 12px;
+        text-align: center;
+        border-radius: 0 0 44% 44%;
+        color: #fff;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    }
+
+    .modal-image {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        margin-bottom: 8px;
+        z-index: 3;
+    }
+
+    .modal-image img {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+        display: block;
+        max-width: 90vw;
+        object-fit: contain;
+    }
+
+    .modal-close {
+        top: 18px;
+        right: 18px;
+        width: 44px;
+        height: 44px;
+        font-size: 28px;
+        background: rgba(0,0,0,0.12);
+        color: #fff;
+        border-radius: 50%;
+        z-index: 10;
+    }
+
+    .modal-content {
+        padding: 20px 20px;
+        margin: 0 auto;
+        font-size: 1rem;
+        box-sizing: border-box;
+        color: #fff;
+        background: var(--bg-card, #252540);
+        border-radius: 32px 32px 0 0;
+        box-shadow: 0 -8px 32px rgba(0,0,0,0.12);
+        flex: 1;
+        max-height: 100%;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .tab-btn {
+        font-size: 1rem;
+        padding: 10px 12px;
+        border-radius: 14px;
+        margin: 0 2px 8px 2px;
+        min-width: 70px;
+        background: rgba(255,255,255,0.10);
+        color: #fff;
+        box-shadow: none;
+    }
+
+    .tab-btn.active {
+        background: #fff;
+        color: black;
+    }
+
+    .type-badge {
+        font-size: 1rem;
+        padding: 6px 14px;
+        border-radius: 16px;
+    }
+
+    .moves-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 8px;
+    }
+
+    .move-badge {
+        font-size: 1rem;
+        padding: 10px 0;
+        border-radius: 14px;
+        margin-bottom: 0;
+        background: rgba(255,255,255,0.08);
+        color: #fff;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        overflow-wrap: break-word;
+        letter-spacing: 0.5px;
+    }
+
+    .modal-name {
+        font-size: 1.4rem;
+        margin-bottom: 6px;
+        word-break: break-word;
+    }
+
+    .modal-id {
+        font-size: 1rem;
+    }
+
+    .info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        padding: 8px 0;
+        font-size: 1rem;
+        word-break: break-word;
+    }
+
+    .modal-nav {
+        width: 44px;
+        height: 44px;
+        font-size: 1.5rem;
+        top: 250px;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.18);
+        color: #fff;
+        z-index: 20;
+    }
+
+    .modal-prev { 
+        left: 0; 
+        margin-left: 2vw; 
+    }
+    
+    .modal-next { 
+        right: 0; 
+        margin-right: 2vw; 
+    }
+}
+
+@media (max-width: 480px) {
+    .pokemon-container {
+        justify-items: center;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    
+    .pokemon-card {
+        width: 100%;
+    }
+
+    .search-container {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .load-more-btn {
+        width: 100%;
+    }
+
+    .modal-nav {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+        top: 250px;
+    }
+
+    .modal-name {
+        font-size: 19px;
+    }
+
+    .modal-image img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .tab-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .type-badge {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 375px) {
+    .search-hint {
+        font-size: 16px;
+        padding: 16px 6px 12px 6px;
+    }
+
+    .main-content {
+        padding: 12px 10px 30px;
+    }
+
+    .pokemon-card {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .modal-name {
+        font-size: 16px;
+    }
+
+    .modal-image img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .info-row {
+        padding: 5px 0;
+    }
+
+    .stat-modal {
+        padding: 20px 0;
+    }
+
+    .moves-list {
+        display: grid;
+        gap: 15px 10px;
+    }
+
+    .move-badge {
+        padding: 5px 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+
