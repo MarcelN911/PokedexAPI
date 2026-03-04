@@ -12,11 +12,25 @@ function prepareModalOverlay(id) {
     currentPokemonId = id;
 }
 
+function updateNavButtons() {
+    let prevBtn = document.getElementById("modalPrev");
+    let nextBtn = document.getElementById("modalNext");
+    if (searchResultIds.length > 0) {
+        let index = searchResultIds.indexOf(currentPokemonId);
+        if (prevBtn) prevBtn.disabled = index <= 0;
+        if (nextBtn) nextBtn.disabled = index >= searchResultIds.length - 1;
+    } else {
+        if (prevBtn) prevBtn.disabled = currentPokemonId <= 1;
+        if (nextBtn) nextBtn.disabled = currentPokemonId >= cardCounter;
+    }
+}
+
 function renderModalContent(modal, pokemon) {
     let mainType = pokemon.types[0].type.name;
     modal.className = "modal-overlay active type-" + mainType;
     modal.innerHTML = createCardModal(pokemon);
     document.getElementById("modalContent").innerHTML = modalContentAbout(pokemon);
+    updateNavButtons();
     document.getElementById("modalClose").focus();
 }
 
@@ -28,10 +42,21 @@ async function openModal(id) {
     renderModalContent(modal, pokemon);
 }
 
-async function updateModal(direction) {
+function getNewPokemonId(direction) {
+    if (searchResultIds.length > 0) {
+        let currentIndex = searchResultIds.indexOf(currentPokemonId);
+        let newIndex = currentIndex + direction;
+        if (newIndex < 0 || newIndex >= searchResultIds.length) return null;
+        return searchResultIds[newIndex];
+    }
     let newId = currentPokemonId + direction;
-    if (newId < 1) newId = 1;
-    if (newId > cardCounter) return;
+    if (newId < 1 || newId > cardCounter) return null;
+    return newId;
+}
+
+async function updateModal(direction) {
+    let newId = getNewPokemonId(direction);
+    if (newId === null) return;
     let pokemon = await loadPokemon(newId);
     currentPokemonId = newId;
     currentPokemon = pokemon;
@@ -40,6 +65,7 @@ async function updateModal(direction) {
     modal.className = "modal-overlay active type-" + mainType;
     document.getElementById("pokemonModal").outerHTML = createCardModal(pokemon);
     document.getElementById("modalContent").innerHTML = modalContentAbout(pokemon);
+    updateNavButtons();
 }
 
 function closeModal() {
@@ -74,27 +100,22 @@ function getCurrentFocusIndex(focusable) {
     return -1;
 }
 
+function getNextFocusIndex(currentIndex, totalElements, goBackward) {
+    if (goBackward) {
+        if (currentIndex <= 0) return totalElements - 1;
+        return currentIndex - 1;
+    } else {
+        if (currentIndex === totalElements - 1) return 0;
+        return currentIndex + 1;
+    }
+}
+
 function trapFocus(event) {
     let focusable = getFocusableElements();
     let currentIndex = getCurrentFocusIndex(focusable);
     event.preventDefault();
-    if (event.shiftKey) {
-        let prevIndex;
-        if (currentIndex <= 0) {
-            prevIndex = focusable.length - 1;
-        } else {
-            prevIndex = currentIndex - 1;
-        }
-        focusable[prevIndex].focus();
-    } else {
-        let nextIndex;
-        if (currentIndex === focusable.length - 1) {
-            nextIndex = 0;
-        } else {
-            nextIndex = currentIndex + 1;
-        }
-        focusable[nextIndex].focus();
-    }
+    let nextIndex = getNextFocusIndex(currentIndex, focusable.length, event.shiftKey);
+    focusable[nextIndex].focus();
 }
 
 document.addEventListener('keydown', function(event) {

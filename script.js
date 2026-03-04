@@ -4,6 +4,7 @@ let firstPokemon = 1;
 let cardCounter = 20;
 let allPokemonList = [];
 let pokemonCache = {};
+let searchResultIds = [];
 
 
 async function init() {
@@ -14,10 +15,16 @@ async function init() {
 }
 
 async function loadAllPokemonMetaList() {
+    let stored = sessionStorage.getItem('allPokemonList');
+    if (stored) {
+        allPokemonList = JSON.parse(stored);
+        return;
+    }
     let maxPokemon = 100;
     let response = await fetch(apiBaseUrl + `?limit=${maxPokemon}`);
     let data = await response.json();
     allPokemonList = data.results;
+    sessionStorage.setItem('allPokemonList', JSON.stringify(allPokemonList));
 }
 
 function showLoader() {
@@ -29,9 +36,7 @@ function hideLoader() {
 }
 
 async function loadPokemon(id) {
-    if (pokemonCache[id]) {
-        return pokemonCache[id];
-    }
+    if (pokemonCache[id]) return pokemonCache[id];
     let response = await fetch(apiBaseUrl + id);
     let pokemon = await response.json();
     pokemonCache[id] = pokemon;
@@ -39,9 +44,7 @@ async function loadPokemon(id) {
 }
 
 async function loadPokemonByUrl(pokemonUrl) {
-    if (pokemonCache[pokemonUrl]) {
-        return pokemonCache[pokemonUrl];
-    }
+    if (pokemonCache[pokemonUrl]) return pokemonCache[pokemonUrl];
     let response = await fetch(pokemonUrl);
     let pokemon = await response.json();
     pokemonCache[pokemonUrl] = pokemon;
@@ -60,6 +63,7 @@ function filterPokemonByName(searchValue) {
 
 function resetSearchUI() {
     document.getElementById("pokemonContainer").innerHTML = "";
+    searchResultIds = [];
     hideLoadMoreButton();
     let allBtn = document.getElementById("showAllBtn");
     if (allBtn) {
@@ -75,8 +79,11 @@ async function loadAndShowResults(searchValue) {
         handleNoResults();
         return;
     }
-    await renderSearchedPokemon(filteredPokemon);
-    hideLoader();
+    try {
+        await renderSearchedPokemon(filteredPokemon);
+    } finally {
+        hideLoader();
+    }
 }
 
 async function showSearchedPokemon() {
@@ -102,9 +109,12 @@ function handleNoResults() {
 }
 
 async function renderSearchedPokemon(pokemonList) {
-    for (let index = 0; index < pokemonList.length && index < 20; index++) {
-        let pokemon = await loadPokemonByUrl(pokemonList[index].url);
-        createCard(pokemon);
+    let limited = pokemonList.slice(0, 20);
+    let promises = limited.map(function(p) { return loadPokemonByUrl(p.url); });
+    let loadedPokemon = await Promise.all(promises);
+    for (let index = 0; index < loadedPokemon.length; index++) {
+        searchResultIds.push(loadedPokemon[index].id);
+        createCard(loadedPokemon[index]);
     }
 }
 
@@ -162,10 +172,14 @@ function getSecondType(pokemon) {
 
 async function createAllCards() {
     showSearchHint("");
-    let newCardsHtml = "";
+    let promises = [];
     for (let index = firstPokemon; index <= cardCounter; index++) {
-        let pokemon = await loadPokemon(index);
-        newCardsHtml += createCardTemplate(pokemon);
+        promises.push(loadPokemon(index));
+    }
+    let pokemonList = await Promise.all(promises);
+    let newCardsHtml = "";
+    for (let index = 0; index < pokemonList.length; index++) {
+        newCardsHtml += createCardTemplate(pokemonList[index]);
     }
     document.getElementById("pokemonContainer").innerHTML += newCardsHtml;
 }
@@ -195,13 +209,16 @@ async function loadMoreCards() {
     btn.disabled = true;
     showLoader();
     updateCardCounter();
-    await createAllCards();
-    if (cardCounter >= allPokemonList.length) {
-        hideLoadMoreButton();
-    } else {
-        btn.disabled = false;
+    try {
+        await createAllCards();
+        if (cardCounter >= allPokemonList.length) {
+            hideLoadMoreButton();
+        } else {
+            btn.disabled = false;
+        }
+    } finally {
+        hideLoader();
     }
-    hideLoader();
 }
 
 function formatPokemonName(name) {
