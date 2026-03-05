@@ -204,6 +204,14 @@ function updateCardCounter() {
     }
 }
 
+function updateLoadMoreBtn(btn) {
+    if (cardCounter >= allPokemonList.length) {
+        hideLoadMoreButton();
+    } else {
+        btn.disabled = false;
+    }
+}
+
 async function loadMoreCards() {
     let btn = document.getElementById("loadMoreBtn");
     btn.disabled = true;
@@ -211,11 +219,7 @@ async function loadMoreCards() {
     updateCardCounter();
     try {
         await createAllCards();
-        if (cardCounter >= allPokemonList.length) {
-            hideLoadMoreButton();
-        } else {
-            btn.disabled = false;
-        }
+        updateLoadMoreBtn(btn);
     } finally {
         hideLoader();
     }
