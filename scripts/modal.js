@@ -12,16 +12,24 @@ function prepareModalOverlay(id) {
     currentPokemonId = id;
 }
 
+function setNavBtnVisibility(btn, hide) {
+    if (hide) {
+        btn.style.display = "none";
+    } else {
+        btn.style.display = "";
+    }
+}
+
 function updateNavButtons() {
     let prevBtn = document.getElementById("modalPrev");
     let nextBtn = document.getElementById("modalNext");
     if (searchResultIds.length > 0) {
         let index = searchResultIds.indexOf(currentPokemonId);
-        if (prevBtn) prevBtn.disabled = index <= 0;
-        if (nextBtn) nextBtn.disabled = index >= searchResultIds.length - 1;
+        setNavBtnVisibility(prevBtn, index <= 0);
+        setNavBtnVisibility(nextBtn, index >= searchResultIds.length - 1);
     } else {
-        if (prevBtn) prevBtn.disabled = currentPokemonId <= 1;
-        if (nextBtn) nextBtn.disabled = currentPokemonId >= cardCounter;
+        setNavBtnVisibility(prevBtn, currentPokemonId <= 1);
+        setNavBtnVisibility(nextBtn, currentPokemonId >= cardCounter);
     }
 }
 

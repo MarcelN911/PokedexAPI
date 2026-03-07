@@ -5,6 +5,7 @@ let cardCounter = 20;
 let allPokemonList = [];
 let pokemonCache = {};
 let searchResultIds = [];
+let isSearchActive = false;
 
 
 async function init() {
@@ -88,19 +89,9 @@ async function loadAndShowResults(searchValue) {
 
 async function showSearchedPokemon() {
     let searchValue = document.getElementById("searchInput").value.toLowerCase();
+    if (searchValue.length < 3) return;
     resetSearchUI();
-    if (!validateSearchInput(searchValue)) {
-        return;
-    }
     await loadAndShowResults(searchValue);
-}
-
-function validateSearchInput(searchValue) {
-    if (searchValue.length < 3) {
-        showSearchHint('Please enter at least <span>3 letters</span> to search.');
-        return false;
-    }
-    return true;
 }
 
 function handleNoResults() {
@@ -184,9 +175,36 @@ async function createAllCards() {
     document.getElementById("pokemonContainer").innerHTML += newCardsHtml;
 }
 
+async function resetToDefault() {
+    document.getElementById("pokemonContainer").innerHTML = "";
+    searchResultIds = [];
+    isSearchActive = false;
+    firstPokemon = 1;
+    cardCounter = 20;
+    document.getElementById("loadMoreBtn").style.display = "";
+    showSearchHint("");
+    await createAllCards();
+}
+
+async function handleSearchInput(value) {
+    if (value.length >= 3) {
+        isSearchActive = true;
+        resetSearchUI();
+        await loadAndShowResults(value);
+    } else if (isSearchActive) {
+        isSearchActive = false;
+        await resetToDefault();
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('searchInput').addEventListener('keydown', function(event) {
+    let input = document.getElementById('searchInput');
+    input.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') showSearchedPokemon();
+    });
+    document.getElementById('searchBtn').addEventListener('click', showSearchedPokemon);
+    input.addEventListener('input', async function() {
+        await handleSearchInput(this.value.toLowerCase());
     });
 });
 
