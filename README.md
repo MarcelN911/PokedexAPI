@@ -1,12 +1,13 @@
 🚀 PokeAPI Pokedex
 Ein interaktiver Pokedex, der zeigt, wie moderne Web-Technologien mit externen Datenquellen kommunizieren.
 
-
+<br>
 <div align="center">
   <a href="https://marcel-neumann.developerakademie.net/PokedexAPI/index.html">
     <img src="https://img.shields.io/badge/LIVE%20DEMO-BESUCHEN-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo">
   </a>
 </div>
+<br>
 
 
 📖 Über das Projekt
