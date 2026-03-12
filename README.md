@@ -1,4 +1,6 @@
-🚀 PokeAPI Pokedex
+🚀 PokeAPI Pokedex 
+<br>
+<br>
 Ein interaktiver Pokedex, der zeigt, wie moderne Web-Technologien mit externen Datenquellen kommunizieren.
 
 <br>
