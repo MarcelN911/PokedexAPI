@@ -1,11 +1,13 @@
 🚀 PokeAPI Pokedex
 Ein interaktiver Pokedex, der zeigt, wie moderne Web-Technologien mit externen Datenquellen kommunizieren.
 
+
 <div align="center">
   <a href="https://marcel-neumann.developerakademie.net/PokedexAPI/index.html">
     <img src="https://img.shields.io/badge/LIVE%20DEMO-BESUCHEN-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo">
   </a>
 </div>
+
 
 📖 Über das Projekt
 Dieses Projekt entstand im Rahmen meiner zertifizierten Weiterbildung zum Fullstack Web Entwickler. Ziel war es, eine performante Web-Applikation zu bauen, die Daten in Echtzeit von der RESTful PokeAPI abruft, verarbeitet und optisch ansprechend darstellt.
