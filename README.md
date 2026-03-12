@@ -12,34 +12,40 @@ Ein interaktiver Pokedex, der zeigt, wie moderne Web-Technologien mit externen D
 <br>
 
 
-📖 Über das Projekt
-Dieses Projekt entstand im Rahmen meiner zertifizierten Weiterbildung zum Fullstack Web Entwickler. Ziel war es, eine performante Web-Applikation zu bauen, die Daten in Echtzeit von der RESTful PokeAPI abruft, verarbeitet und optisch ansprechend darstellt.
-🛠 Tech-Stack
+📖 Über das Projekt <br>
+
+Dieses Projekt entstand im Rahmen meiner zertifizierten Weiterbildung zum Fullstack Web Entwickler. Ziel war es, eine performante Web-Applikation zu bauen, die Daten in Echtzeit von der RESTful PokeAPI abruft, verarbeitet und optisch ansprechend darstellt. <br><br>
+
+🛠 Tech-Stack <br>
+
 Frontend: HTML5, CSS3, JavaScript (ES6+)
 
 Datenquelle: PokeAPI (REST-Schnittstelle)
 
-Konzept: Asynchrone Datenverarbeitung, Responsive Design, DOM-Manipulation
+Konzept: Asynchrone Datenverarbeitung, Responsive Design, DOM-Manipulation <br><br>
 
-⚡ Key-Features
+⚡ Key-Features <br>
+
 Dynamisches Laden: Pokémon-Daten werden asynchron geladen, um die Performance zu maximieren.
 
 Suchfunktion: Echtzeit-Filterung der geladenen Pokémon nach Namen.
 
 Detail-Ansicht: Interaktive Karten mit Statistiken (Base Stats), Typen und Fähigkeiten.
 
-Responsives Layout: Optimiert für Desktop, Tablet und Smartphone.
+Responsives Layout: Optimiert für Desktop, Tablet und Smartphone. <br><br>
 
-🎨 Design & User Experience
+🎨 Design & User Experience <br>
+
 Eigenständiges Design: Das visuelle Konzept wurde von mir frei entworfen und eigenverantwortlich umgesetzt.
 
 Fokus: Ein modernes, cleanes Interface, das die Pokémon-Daten übersichtlich darstellt.
 
 Farbkonzept: Dynamische Anpassung der Hintergrundfarben basierend auf dem primären Typ des jeweiligen Pokémon (z. B. Feuer = Rot, Wasser = Blau).
 
-Mobile-First: Das Layout wurde von Grund auf so entwickelt, dass es auf Smartphones genauso intuitiv funktioniert wie auf dem Desktop.
+Mobile-First: Das Layout wurde von Grund auf so entwickelt, dass es auf Smartphones genauso intuitiv funktioniert wie auf dem Desktop. <br><br>
 
-💡 Was ich bei diesem Projekt gelernt habe
+💡 Was ich bei diesem Projekt gelernt habe <br>
+
 API-Integration: Sicherer Umgang mit fetch und Fehlerbehandlung.
 
 Data Mapping: Umwandlung von komplexen JSON-Strukturen in sauberes HTML.
