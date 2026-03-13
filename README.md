@@ -1,53 +1,57 @@
-🚀 PokeAPI Pokedex 
-<br>
-<br>
-Ein interaktiver Pokedex, der zeigt, wie moderne Web-Technologien mit externen Datenquellen kommunizieren.
+# 🔮 PokedexAPI
 
-<br>
-<div align="center">
-  <a href="https://marcel-neumann.developerakademie.net/PokedexAPI/index.html">
-    <img src="https://img.shields.io/badge/LIVE%20DEMO-BESUCHEN-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo">
-  </a>
-</div>
-<br>
+An interactive Pokédex that fetches and displays data from the [PokeAPI](https://pokeapi.co/) in real time — built with vanilla JavaScript, no frameworks.
 
+[![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-Visit-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white)](https://marcel-neumann.developerakademie.net/PokedexAPI/index.html)
 
-📖 Über das Projekt <br>
+---
 
-Dieses Projekt entstand im Rahmen meiner zertifizierten Weiterbildung zum Fullstack Web Entwickler. Ziel war es, eine performante Web-Applikation zu bauen, die Daten in Echtzeit von der RESTful PokeAPI abruft, verarbeitet und optisch ansprechend darstellt. <br><br>
+## ⚡ Features
 
-🛠 Tech-Stack <br>
+- **Real-time API fetching** — Pokémon data loaded asynchronously via `fetch` and `async/await`
+- **Search** — Filter Pokémon by name in real time as you type
+- **Detail cards** — Click any Pokémon to see stats, types and abilities
+- **Dynamic colors** — Card backgrounds adapt to the Pokémon's primary type (Fire = red, Water = blue, etc.)
+- **Responsive** — Mobile-first design, works on phone, tablet and desktop
 
-Frontend: HTML5, CSS3, JavaScript (ES6+)
+---
 
-Datenquelle: PokeAPI (REST-Schnittstelle)
+## 🛠 Tech Stack
 
-Konzept: Asynchrone Datenverarbeitung, Responsive Design, DOM-Manipulation <br><br>
+| Area | Technology |
+|------|-----------|
+| Structure | HTML5 |
+| Styling | CSS3 (custom, no framework) |
+| Logic | JavaScript (ES6+) |
+| Data | [PokeAPI](https://pokeapi.co/) (RESTful) |
+| Concepts | Async/Await, DOM manipulation, Responsive Design |
 
-⚡ Key-Features <br>
+---
 
-Dynamisches Laden: Pokémon-Daten werden asynchron geladen, um die Performance zu maximieren.
+## 🚀 Getting Started
 
-Suchfunktion: Echtzeit-Filterung der geladenen Pokémon nach Namen.
+```bash
+# Clone the repo
+git clone https://github.com/MarcelN911/PokedexAPI.git
 
-Detail-Ansicht: Interaktive Karten mit Statistiken (Base Stats), Typen und Fähigkeiten.
+# Open in browser
+cd PokedexAPI
+open index.html
+```
 
-Responsives Layout: Optimiert für Desktop, Tablet und Smartphone. <br><br>
+No build tools or dependencies required — it's pure HTML, CSS and JavaScript.
 
-🎨 Design & User Experience <br>
+---
 
-Eigenständiges Design: Das visuelle Konzept wurde von mir frei entworfen und eigenverantwortlich umgesetzt.
+## 💡 What I Learned
 
-Fokus: Ein modernes, cleanes Interface, das die Pokémon-Daten übersichtlich darstellt.
+- Working with RESTful APIs and handling async data flows
+- Transforming complex JSON structures into clean, readable UI
+- Building a responsive layout from scratch without CSS frameworks
+- Designing an intuitive interface with dynamic, type-based color theming
 
-Farbkonzept: Dynamische Anpassung der Hintergrundfarben basierend auf dem primären Typ des jeweiligen Pokémon (z. B. Feuer = Rot, Wasser = Blau).
+---
 
-Mobile-First: Das Layout wurde von Grund auf so entwickelt, dass es auf Smartphones genauso intuitiv funktioniert wie auf dem Desktop. <br><br>
+## 📄 License
 
-💡 Was ich bei diesem Projekt gelernt habe <br>
-
-API-Integration: Sicherer Umgang mit fetch und Fehlerbehandlung.
-
-Data Mapping: Umwandlung von komplexen JSON-Strukturen in sauberes HTML.
-
-UI/UX: Erstellung eines intuitiven Designs, das auch auf kleinen Bildschirmen flüssig funktioniert.
+This project is open source and available for learning purposes.
